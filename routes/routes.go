@@ -2,7 +2,6 @@ package routes
 
 import (
 	"btc_api/controllers"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,6 +13,11 @@ func SetupRouter() *gin.Engine {
 		deviceRoutes.GET("/", controllers.ShowDevices)
 		deviceRoutes.GET("/:id", controllers.GetDeviceByIdController)
 		deviceRoutes.POST("/", controllers.AddDevice)
+	}
+
+	fibonacciRoutes := r.Group("/fibonacci")
+	{
+		fibonacciRoutes.GET("/:number", controllers.FibonacciController)
 	}
 	return r
 }
