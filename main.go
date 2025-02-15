@@ -1,10 +1,8 @@
 package main
 
 import (
-	"btc_api/controllers"
 	"btc_api/initializers"
-
-	"github.com/gin-gonic/gin"
+	"btc_api/routes"
 )
 
 func init () {
@@ -13,11 +11,7 @@ func init () {
 }
 
 func main () {
-	r := gin.Default()
-
-	r.POST("/devices", controllers.AddDevice)
-	r.GET("/devices", controllers.ShowDevices)
-	r.GET("/device/:id", controllers.GetDeviceByIdController)
+	r := routes.SetupRouter()
 
 	r.Run()
 }
