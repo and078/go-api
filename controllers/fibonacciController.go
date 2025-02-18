@@ -8,16 +8,16 @@ import (
 )
 
 func FibonacciController (c *gin.Context) {
+	ch := make(chan uint64)
 	number := c.Param("number")
 	n, err := strconv.Atoi(number)
 	if err != nil {
 		panic(err)
 	}
-	ch := make(chan uint64)
-	go fibonacci.Fibonacci(uint64(n), ch)
-
+	
+	go fibonacci.Fibonacci(ch)
+	ch <- uint64(n)
 	c.JSON(200, gin.H{
-		"number": n,
 		"fibonacci": <- ch,
 	})
 }

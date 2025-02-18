@@ -1,7 +1,7 @@
 package fibonacci
 
-func Fibonacci (n uint64, ch chan uint64) {
-	res := fibonacci(n)
+func Fibonacci (ch chan uint64) {
+	res := fibonacci(<- ch)
 	ch <- res
 }
 
