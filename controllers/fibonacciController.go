@@ -18,6 +18,7 @@ func FibonacciController (c *gin.Context) {
 	go fibonacci.Fibonacci(ch)
 	ch <- uint64(n)
 	c.JSON(200, gin.H{
+		"number": n,
 		"fibonacci": <- ch,
 	})
 }

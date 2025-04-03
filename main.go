@@ -12,6 +12,5 @@ func init () {
 
 func main () {
 	r := routes.SetupRouter()
-
 	r.Run()
 }
